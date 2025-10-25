@@ -1,4 +1,5 @@
 Breadth-First Search: Shortest Path Between Two Actors
+
 This project is part of CS50’s Introduction to Artificial Intelligence.
 It implements a Breadth-First Search (BFS) algorithm to find the shortest path between two actors through the movies they have starred in together.
 
