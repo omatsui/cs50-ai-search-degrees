@@ -94,14 +94,14 @@ def shortest_path(source, target):
     start_node = Node(state=source, parent=None, action=None)
     node = start_node
 
-    frontier = QueueFrontier()
+    frontier = QueueFrontier() # Use Queue Frontier for Breadth-First Search (BFS)
     frontier.add(node)
 
     explored_actors = set()
-    while not frontier.empty():
+    while not frontier.empty(): # Stop if frontier is empty
         node = frontier.remove()
 
-        if node.state == target:
+        if node.state == target:    # Recreate full path to target 
             path = []
             while node.parent is not None:
                 path.append((node.action, node.state))
@@ -109,13 +109,13 @@ def shortest_path(source, target):
             path.reverse()
             return path
 
-        explored_actors.add(node.state)
+        explored_actors.add(node.state) # Keep track of already explored nodes
 
-        for neighbour in neighbors_for_person(node.state):
+        for neighbour in neighbors_for_person(node.state):  # Look for all possible next steps
             if (not frontier.contains_state(neighbour[1])) and (neighbour[1] not in explored_actors):
                 frontier.add(Node(state=neighbour[1], parent=node, action=neighbour[0]))
 
-    return None
+    return None # Return None if frontier is empty
 
 
 def person_id_for_name(name):
